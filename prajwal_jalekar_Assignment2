@@ -1,0 +1,235 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "6374a67c-e8c9-4699-b432-ef9c97a4883b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "{'Europe': 7, 'Asia': 5, 'Central America': 1, 'Australia': 1, 'North America': 2, 'South America': 1, 'Africa': 1}\n"
+     ]
+    }
+   ],
+   "source": [
+    " # 1.Create a dictionary named users_continents and use it to store the number of users for each continent.Answer=>\n",
+    "users = [\n",
+    "    ('Maria', 'Greek'), ('Jean', 'Maltese'),\n",
+    "    ('Juan', 'Spanish'), ('Dima', 'Ukrainian'),\n",
+    "    ('Agata', 'Thai'), ('Rafal', 'Polish'),\n",
+    "    ('Diego', 'Turkish'), ('Stan', 'Panamanian'),\n",
+    "    ('John', 'Australian'), ('Frank', 'Belgian'),\n",
+    "    ('Jane', 'Canadian'), ('Paul', 'Argentinian'),\n",
+    "    ('Taylor', 'Danish'), ('Kate', 'American'),\n",
+    "    ('Mark', 'Sri Lankan'), ('Jane', 'Japanese'),\n",
+    "    ('Ted', 'Indian'), ('Jean', 'Egyptian')\n",
+    "]\n",
+    "\n",
+    "nationality_to_continents = {\n",
+    "    'Greek': 'Europe', 'Maltese': 'Europe',\n",
+    "    'Spanish': 'Europe', 'Ukrainian': 'Europe',\n",
+    "    'Thai': 'Asia', 'Polish': 'Europe',\n",
+    "    'Turkish': 'Asia', 'Panamanian': 'Central America',\n",
+    "    'Australian': 'Australia', 'Belgian': 'Europe',\n",
+    "    'Canadian': 'North America', 'Argentinian': 'South America',\n",
+    "    'Danish': 'Europe', 'American': 'North America',\n",
+    "    'Sri Lankan': 'Asia', 'Japanese': 'Asia',\n",
+    "    'Indian': 'Asia', 'Egyptian': 'Africa'\n",
+    "}\n",
+    "users_continents = {}\n",
+    "\n",
+    "for name, nationality in users:\n",
+    "    continent = nationality_to_continents.get(nationality)\n",
+    "    if continent:\n",
+    "        users_continents[continent] = users_continents.get(continent, 0) + 1\n",
+    "\n",
+    "print(users_continents)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "51911a7b-bc56-4088-84aa-436a1cb08b55",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[('Leslie Burton', 'HR Specialist', 2300), ('Dorothy Castillo', 'UX Designer', 3100)]\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "\n",
+    "# 2. Create a funcion named remove_sql_specialists(people_list). Given a list of tuples, it removes people whose job titles contain the word \"SQL\" from the list. Answer=>\n",
+    "def remove_sql_specialists(people_list):\n",
+    "    result = []\n",
+    "    for person in people_list:\n",
+    "        name, job, salary = person\n",
+    "        if \"SQL\" not in job:\n",
+    "            result.append(person)\n",
+    "    return result\n",
+    "\n",
+    "new_hires = [\n",
+    "    ('Mark Adams', 'SQL Analyst', 4000),\n",
+    "    ('Leslie Burton', 'HR Specialist', 2300),\n",
+    "    ('Dorothy Castillo', 'UX Designer', 3100)\n",
+    "]\n",
+    "filtered_list = remove_sql_specialists(new_hires)\n",
+    "print(filtered_list)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "e3719fd5-c7d9-445d-ab7d-aef407d6e72a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Enter a string:  Aaseya12345\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Letters: 6\n",
+      "Digits: 5\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "\n",
+    "# 3.Python program that accepts a string and calculates the number of digits and letters. [take string input from user]. Answer=>\n",
+    "user_input = input(\"Enter a string: \")\n",
+    "\n",
+    "\n",
+    "letter_count = 0\n",
+    "digit_count = 0\n",
+    "\n",
+    "\n",
+    "for char in user_input:\n",
+    "    if char.isalpha():\n",
+    "        letter_count += 1\n",
+    "    elif char.isdigit():\n",
+    "        digit_count += 1\n",
+    "\n",
+    "\n",
+    "print(\"Letters:\", letter_count)\n",
+    "print(\"Digits:\", digit_count)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "cbf9101b-e872-4cd1-87b4-d336f3669b37",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "200,202,204,206,208,220,222,224,226,228,240,242,244,246,248,260,262,264,266,268,280,282,284,286,288,400\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "\n",
+    "# 4. Write a Python program to find numbers between 100 and 400 (both included) where each digit of a number is an even number.  Answer=>\n",
+    "\n",
+    "even_digit_numbers = []\n",
+    "\n",
+    "\n",
+    "for num in range(100, 401):\n",
+    "    num_str = str(num)\n",
+    "    \n",
+    "    if all(int(digit) % 2 == 0 for digit in num_str):\n",
+    "        even_digit_numbers.append(num_str)\n",
+    "\n",
+    "print(\",\".join(even_digit_numbers))\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "9e20af02-c5f7-49d3-83fd-9969ecbb7a8d",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter 5 numbers:\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Number 1:  20\n",
+      "Number 2:  40\n",
+      "Number 3:  90\n",
+      "Number 4:  70\n",
+      "Number 5:  7\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The median is: 40.0\n"
+     ]
+    }
+   ],
+   "source": [
+    "\n",
+    "\n",
+    "# 5. Write a Python program to find the median of five values.[As given by users]. Answer=>\n",
+    "\n",
+    "numbers = []\n",
+    "\n",
+    "print(\"Enter 5 numbers:\")\n",
+    "for i in range(5):\n",
+    "    num = float(input(f\"Number {i+1}: \"))\n",
+    "    numbers.append(num)\n",
+    "\n",
+    "numbers.sort()\n",
+    "\n",
+    "median = numbers[2]  \n",
+    "\n",
+    "print(\"The median is:\", median)\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
